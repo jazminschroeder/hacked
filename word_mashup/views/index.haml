@@ -1,0 +1,13 @@
+%h1 Word Mashup
+%form{:method => "get"}
+  %input{:name => "word", :type => "text", :value => params[:word]}
+  %input{:name => "submit", :type => "submit"}
+-if @words
+  %ul
+    - @words.each do |word|
+      %li
+        = word.spelling
+        - if word.has_definitions?
+          %ul
+            - word.definitions.each do |definition|
+              %li=  definition
